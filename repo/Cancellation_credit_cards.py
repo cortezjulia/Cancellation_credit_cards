@@ -4,5 +4,16 @@ import pandas as pd
 from IPython.display import display
 
 table=pd.read_csv('ClientesBanco.csv',encoding='latin1')
+table=table.drop('CLIENTNUM',axis=1)
+display(table.round(1))
 
-display(table)
+
+table.dropna()
+display(table.info())
+
+display(table.describe().round(1))
+category_quantity=table['Categoria'].value_counts()
+display(category_quantity)
+category_quantity_perc=table['Categoria'].value_counts(normalize=True)
+display(category_quantity_perc)
+
